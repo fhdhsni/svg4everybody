@@ -2,7 +2,7 @@
     "function" == typeof define && define.amd ? // AMD. Register as an anonymous module unless amdModuleId is set
     define([], function() {
         return root.svg4everybody = factory();
-    }) : "object" == typeof exports ? // Node. Does not work with strict CommonJS, but
+    }) : "object" == typeof module && module.exports ? // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
     module.exports = factory() : root.svg4everybody = factory();
@@ -60,7 +60,7 @@
                         // create a new fallback image
                         var img = document.createElement("img");
                         // force display in older IE
-                        img.style.cssText = "display:inline-block;height:100%;width:100%", // set the fallback size using the svg size
+                        img.style.cssText = "display:inline-block", // set the fallback size using the svg size
                         img.setAttribute("width", svg.getAttribute("width") || svg.clientWidth), img.setAttribute("height", svg.getAttribute("height") || svg.clientHeight), 
                         // set the fallback src
                         img.src = fallback(src, svg, use), // replace the <use> with the fallback image
